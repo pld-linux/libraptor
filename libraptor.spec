@@ -3,12 +3,12 @@ Summary(pl):	Raptor - zestaw narzêdzi do analizy RDF
 Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
-Version:	1.3.1
+Version:	1.3.2
 Release:	1
 License:	LGPL or GPL or MPL
 Group:		Libraries
 Source0:	http://www.redland.opensource.ac.uk/dist/source/%{rname}-%{version}.tar.gz
-# Source0-md5:	c34bdf2d02b375947dfcfdc159003c66
+# Source0-md5:	ff76db43e24ae803e69ef3f7081c78e0
 URL:		http://www.redland.opensource.ac.uk/raptor/
 BuildRequires:	autoconf
 BuildRequires:	automake
