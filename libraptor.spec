@@ -4,7 +4,7 @@ Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
 Version:	1.3.2
-Release:	1
+Release:	2
 License:	LGPL or GPL or MPL
 Group:		Libraries
 Source0:	http://www.redland.opensource.ac.uk/dist/source/%{rname}-%{version}.tar.gz
@@ -60,16 +60,17 @@ Static libraptor library.
 Statyczna biblioteka libraptor.
 
 %package rapper
-Summary:	Raptor RDF parser test program without Redland RDF support
-Summary(pl):	Testowy program parsera Raptor RDF bez wsparcia dla Redland RDF
+Summary:	Raptor RDF parser test program
+Summary(pl):	Testowy program parsera Raptor RDF
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
+Obsoletes:	redland-rapper
 
 %description rapper
-Raptor RDF parser test program without Redland RDF support.
+Raptor RDF parser test program.
 
 %description rapper -l pl
-Testowy program parsera Raptor RDF bez wsparcia dla Redland RDF.
+Testowy program parsera Raptor RDF.
 
 %prep
 %setup -q -n %{rname}-%{version}
