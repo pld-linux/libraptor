@@ -1,5 +1,5 @@
-Summary:	-
-Summary(pl):	-
+Summary:	Raptor RDF Parser Toolkit
+Summary(pl):	Raptor - zestaw narzêdzi do analizy RDF
 Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
@@ -9,29 +9,54 @@ License:	LGPL or GPL or MPL
 Group:		Libraries
 Source0:	http://www.redland.opensource.ac.uk/dist/source/%{rname}-%{version}.tar.gz
 URL:		http://www.redland.opensource.ac.uk/raptor/
+# WWW library can be one of: curl(default),xml,libwww,none
+BuildRequires:	curl-devel
+# XML library can be libxml or expat
+BuildRequires:	libxml2-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
+Raptor is the RDF Parser Toolkit for Redland written in C consisting
+of two parsers for the RDF/XML and N-Triples syntaxes for RDF. Raptor
+is designed to work efficiently when used with Redland but is entirely
+separate.
+
+%description -l pl
+Raptor to zestaw narzêdzi do analizy RDF dla Redland napisany w C,
+sk³adaj±cy siê z dwóch analizatorów dla sk³adni RDF/XML i N-Triplets
+dla RDF. Raptor zosta³ zaprojektowany, by pracowaæ wydajnie, je¶li
+jest u¿ywany z Redland, ale jest ca³kowicie oddzielny.
 
 %package devel
-Summary:	-
-Summary(pl):	-
+Summary:	libraptor library header files
+Summary(pl):	Pliki nag³ówkowe biblioteki libraptor
 Group:		Development/Libraries
+Requires:	%{name} = %{version}
 
 %description devel
+libraptor library header files.
+
+%description devel -l pl
+Pliki nag³ówkowe biblioteki libraptor.
 
 %package static
-Summary:	-
-Summary(pl):	-
+Summary:	Static libraptor library
+Summary(pl):	Statyczna biblioteka libraptor
 Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}
 
 %description static
+Static libraptor library.
+
+%description static -l pl
+Statyczna biblioteka libraptor.
 
 %prep
 %setup -q -n %{rname}-%{version}
 
 %build
-%configure
+%configure \
+	--enable-release
 %{__make}
 
 %install
@@ -48,9 +73,21 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog LICENSE.txt NEWS README
+%attr(755,root,root) %{_bindir}/rapper
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%{_mandir}/man1/rapper.1*
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/raptor-config
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
+%{_includedir}/*.h
+%{_pkgconfigdir}/*.pc
+%{_mandir}/man1/raptor-config.1*
+%{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
+%{_libdir}/lib*.a
