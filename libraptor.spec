@@ -10,6 +10,8 @@ Group:		Libraries
 Source0:	http://www.redland.opensource.ac.uk/dist/source/%{rname}-%{version}.tar.gz
 # Source0-md5:	4a8bd03b371f5b4e967b1844fcd395ec
 URL:		http://www.redland.opensource.ac.uk/raptor/
+BuildRequires:	autoconf
+BuildRequires:	automake
 # WWW library can be one of: curl(default),xml,libwww,none
 BuildRequires:	curl-devel
 BuildRequires:	glib2-devel >= 2.0.0
