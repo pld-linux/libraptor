@@ -12,6 +12,7 @@ Source0:	http://www.redland.opensource.ac.uk/dist/source/%{rname}-%{version}.tar
 URL:		http://www.redland.opensource.ac.uk/raptor/
 # WWW library can be one of: curl(default),xml,libwww,none
 BuildRequires:	curl-devel
+BuildRequires:	glib2-devel
 # XML library can be libxml or expat
 BuildRequires:	libxml2-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,6 +35,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki libraptor
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	curl-devel
+Requires:	glib2-devel
 Requires:	libxml2-devel
 
 %description devel
