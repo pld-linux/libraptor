@@ -4,7 +4,7 @@ Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
 Version:	1.1.0
-Release:	1
+Release:	2
 License:	LGPL or GPL or MPL
 Group:		Libraries
 Source0:	http://www.redland.opensource.ac.uk/dist/source/%{rname}-%{version}.tar.gz
@@ -73,6 +73,9 @@ Testowy program parsera Raptor RDF bez wsparcia dla Redland RDF.
 %setup -q -n %{rname}-%{version}
 
 %build
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-release
 %{__make}
