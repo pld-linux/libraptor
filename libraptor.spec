@@ -8,6 +8,7 @@ Release:	1
 License:	LGPL or GPL or MPL
 Group:		Libraries
 Source0:	http://www.redland.opensource.ac.uk/dist/source/%{rname}-%{version}.tar.gz
+# Source0-md5:	7c4a3b7fb9f3df3de0430cbcf022d1bc
 URL:		http://www.redland.opensource.ac.uk/raptor/
 # WWW library can be one of: curl(default),xml,libwww,none
 BuildRequires:	curl-devel
