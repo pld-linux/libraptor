@@ -32,6 +32,8 @@ Summary:	libraptor library header files
 Summary(pl):	Pliki nag³ówkowe biblioteki libraptor
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	curl-devel
+Requires:	libxml2-devel
 
 %description devel
 libraptor library header files.
@@ -50,6 +52,18 @@ Static libraptor library.
 
 %description static -l pl
 Statyczna biblioteka libraptor.
+
+%package rapper
+Summary:	Raptor RDF parser test program without Redland RDF support
+Summary(pl):	Testowy program parsera Raptor RDF bez wsparcia dla Redland RDF
+Group:		Applications
+Requires:	%{name} = %{version}
+
+%description rapper
+Raptor RDF parser test program without Redland RDF support.
+
+%description rapper -l pl
+Testowy program parsera Raptor RDF bez wsparcia dla Redland RDF.
 
 %prep
 %setup -q -n %{rname}-%{version}
@@ -74,9 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog LICENSE.txt NEWS README
-%attr(755,root,root) %{_bindir}/rapper
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%{_mandir}/man1/rapper.1*
 
 %files devel
 %defattr(644,root,root,755)
@@ -91,3 +103,8 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files rapper
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/rapper
+%{_mandir}/man1/rapper.1*
