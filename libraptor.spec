@@ -3,12 +3,12 @@ Summary(pl):	Raptor - zestaw narzêdzi do analizy RDF
 Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
-Version:	1.4.7
+Version:	1.4.8
 Release:	1
 License:	LGPL v2.1+ or GPL v2+ or Apache v2.0+
 Group:		Libraries
-Source0:	http://librdf.org/dist/source/%{rname}-%{version}.tar.gz
-# Source0-md5:	f8e251f5183307ab50041c858117370f
+Source0:	http://download.librdf.org/source/%{rname}-%{version}.tar.gz
+# Source0-md5:	112d8b72a37f4de8a00f840999f2d383
 URL:		http://librdf.org/raptor/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -18,6 +18,7 @@ BuildRequires:	glib2-devel >= 2.0.0
 # XML library can be libxml or expat
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -83,7 +84,8 @@ Testowy program parsera Raptor RDF.
 # (note: don't pass empty LDFLAGS - it would be overridden)
 LDFLAGS="`echo %{rpmldflags} | sed -e 's/\(^\| \)-s\>/ /'`"
 %configure \
-	--enable-release
+	--enable-release \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -112,6 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/*.pc
 %{_mandir}/man1/raptor-config.1*
 %{_mandir}/man3/*
+%{_gtkdocdir}/raptor
 
 %files static
 %defattr(644,root,root,755)
