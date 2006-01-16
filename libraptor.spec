@@ -83,7 +83,9 @@ Testowy program parsera Raptor RDF.
 # avoid -s in LDFLAGS, `raptor-config --libs` would print it
 # (note: don't pass empty LDFLAGS - it would be overridden)
 LDFLAGS="`echo %{rpmldflags} | sed -e 's/\(^\| \)-s\>/ /'`"
+# avoid using parsedate from libinn, use curl_getdate instead
 %configure \
+	ac_cv_header_libinn_h=no \
 	--enable-release \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
