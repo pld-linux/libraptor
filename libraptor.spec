@@ -3,19 +3,19 @@ Summary(pl):	Raptor - zestaw narzêdzi do analizy RDF
 Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
-Version:	1.4.13
+Version:	1.4.14
 Release:	1
 License:	LGPL v2.1+ or GPL v2+ or Apache v2.0+
 Group:		Libraries
 Source0:	http://download.librdf.org/source/%{rname}-%{version}.tar.gz
-# Source0-md5:	a00b9685dd42d29537a4ff6bc94efabd
+# Source0-md5:	1bbc9938f8f7310e20fbd5b962a43847
 URL:		http://librdf.org/raptor/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.7
-# WWW library can be one of: curl(default),xml,libwww,none
+# WWW library can be one of: curl(default),xml,libfetch,libwww,none
 BuildRequires:	curl-devel
 # XML library can be libxml or expat; grddl parser requires libxml2+libxslt anyway
-BuildRequires:	libxml2-devel >= 2.4.0
+BuildRequires:	libxml2-devel >= 2.6.8
 BuildRequires:	libxslt-devel >= 1.0.18
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.98
@@ -39,7 +39,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki libraptor
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	curl-devel
-Requires:	libxml2-devel >= 2.4.0
+Requires:	libxml2-devel >= 2.6.8
 Requires:	libxslt-devel >= 1.0.18
 
 %description devel
