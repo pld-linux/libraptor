@@ -1,5 +1,5 @@
 Summary:	Raptor RDF Parser Toolkit
-Summary(pl):	Raptor - zestaw narzÍdzi do analizy RDF
+Summary(pl.UTF-8):   Raptor - zestaw narzƒôdzi do analizy RDF
 Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
@@ -27,15 +27,15 @@ of two parsers for the RDF/XML and N-Triples syntaxes for RDF. Raptor
 is designed to work efficiently when used with Redland but is entirely
 separate.
 
-%description -l pl
-Raptor to zestaw narzÍdzi do analizy RDF dla Redland napisany w C,
-sk≥adaj±cy siÍ z dwÛch analizatorÛw dla sk≥adni RDF/XML i N-Triplets
-dla RDF. Raptor zosta≥ zaprojektowany, by pracowaÊ wydajnie, je∂li
-jest uøywany z Redland, ale jest ca≥kowicie oddzielny.
+%description -l pl.UTF-8
+Raptor to zestaw narzƒôdzi do analizy RDF dla Redland napisany w C,
+sk≈ÇadajƒÖcy siƒô z dw√≥ch analizator√≥w dla sk≈Çadni RDF/XML i N-Triplets
+dla RDF. Raptor zosta≈Ç zaprojektowany, by pracowaƒá wydajnie, je≈õli
+jest u≈ºywany z Redland, ale jest ca≈Çkowicie oddzielny.
 
 %package devel
 Summary:	libraptor library header files
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki libraptor
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki libraptor
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	curl-devel
@@ -45,24 +45,24 @@ Requires:	libxslt-devel >= 1.0.18
 %description devel
 libraptor library header files.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe biblioteki libraptor.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki libraptor.
 
 %package static
 Summary:	Static libraptor library
-Summary(pl):	Statyczna biblioteka libraptor
+Summary(pl.UTF-8):   Statyczna biblioteka libraptor
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libraptor library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libraptor.
 
 %package rapper
 Summary:	Raptor RDF parser test program
-Summary(pl):	Testowy program parsera Raptor RDF
+Summary(pl.UTF-8):   Testowy program parsera Raptor RDF
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	redland-rapper
@@ -70,7 +70,7 @@ Obsoletes:	redland-rapper
 %description rapper
 Raptor RDF parser test program.
 
-%description rapper -l pl
+%description rapper -l pl.UTF-8
 Testowy program parsera Raptor RDF.
 
 %prep
