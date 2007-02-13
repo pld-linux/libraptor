@@ -1,5 +1,5 @@
 Summary:	Raptor RDF Parser Toolkit
-Summary(pl.UTF-8):   Raptor - zestaw narzędzi do analizy RDF
+Summary(pl.UTF-8):	Raptor - zestaw narzędzi do analizy RDF
 Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
@@ -35,7 +35,7 @@ jest używany z Redland, ale jest całkowicie oddzielny.
 
 %package devel
 Summary:	libraptor library header files
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libraptor
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libraptor
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	curl-devel
@@ -50,7 +50,7 @@ Pliki nagłówkowe biblioteki libraptor.
 
 %package static
 Summary:	Static libraptor library
-Summary(pl.UTF-8):   Statyczna biblioteka libraptor
+Summary(pl.UTF-8):	Statyczna biblioteka libraptor
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -62,7 +62,7 @@ Statyczna biblioteka libraptor.
 
 %package rapper
 Summary:	Raptor RDF parser test program
-Summary(pl.UTF-8):   Testowy program parsera Raptor RDF
+Summary(pl.UTF-8):	Testowy program parsera Raptor RDF
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	redland-rapper
