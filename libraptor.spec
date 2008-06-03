@@ -3,12 +3,12 @@ Summary(pl.UTF-8):	Raptor - zestaw narzędzi do analizy RDF
 Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
-Version:	1.4.16
-Release:	3
+Version:	1.4.17
+Release:	1
 License:	LGPL v2.1+ or GPL v2+ or Apache v2.0+
 Group:		Libraries
 Source0:	http://download.librdf.org/source/%{rname}-%{version}.tar.gz
-# Source0-md5:	49c16262e0aed0197a3e60ade7bec205
+# Source0-md5:	1cf4627c91fbe5f7ab3c358351a27f79
 URL:		http://librdf.org/raptor/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.7
@@ -77,8 +77,10 @@ Testowy program parsera Raptor RDF.
 %setup -q -n %{rname}-%{version}
 
 %build
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 # avoid -s in LDFLAGS, `raptor-config --libs` would print it
 # (note: don't pass empty LDFLAGS - it would be overridden)
@@ -105,22 +107,23 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog LICENSE.txt NEWS README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libraptor.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libraptor.so.1
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/raptor-config
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*.h
-%{_pkgconfigdir}/*.pc
+%attr(755,root,root) %{_libdir}/libraptor.so
+%{_libdir}/libraptor.la
+%{_includedir}/raptor.h
+%{_pkgconfigdir}/raptor.pc
 %{_mandir}/man1/raptor-config.1*
-%{_mandir}/man3/*
+%{_mandir}/man3/libraptor.3*
 %{_gtkdocdir}/raptor
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libraptor.a
 
 %files rapper
 %defattr(644,root,root,755)
