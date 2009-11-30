@@ -14,6 +14,8 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.7
 # WWW library can be one of: curl(default),xml,libfetch,libwww,none
 BuildRequires:	curl-devel
+BuildRequires:	gtk-doc-automake
+BuildRequires:	libtool
 # XML library can be libxml or expat; grddl parser requires libxml2+libxslt anyway
 BuildRequires:	libxml2-devel >= 2.6.8
 BuildRequires:	libxslt-devel >= 1.0.18
