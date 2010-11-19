@@ -10,11 +10,11 @@ Group:		Libraries
 Source0:	http://download.librdf.org/source/%{rname}-%{version}.tar.gz
 # Source0-md5:	992061488af7a9e2d933df6b694bb876
 URL:		http://librdf.org/raptor/
-BuildRequires:	autoconf >= 2.50
+BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.7
 # WWW library can be one of: curl(default),xml,libfetch,libwww,none
 BuildRequires:	curl-devel
-BuildRequires:	gtk-doc-automake
+BuildRequires:	gtk-doc-automake >= 1.3
 BuildRequires:	libtool
 # XML library can be libxml or expat; grddl parser requires libxml2+libxslt anyway
 BuildRequires:	libxml2-devel >= 2.6.8
