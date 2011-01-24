@@ -62,12 +62,26 @@ Static libraptor library.
 %description static -l pl.UTF-8
 Statyczna biblioteka libraptor.
 
+%package apidocs
+Summary:	libraptor API documentation
+Summary(pl.UTF-8):	Dokumentacja API biblioteki libraptor
+Group:		Documentation
+Requires:	gtk-doc-common
+Conflicts:	libraptor2-apidocs
+
+%description apidocs
+libraptor API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki libraptor.
+
 %package rapper
 Summary:	Raptor RDF parser test program
 Summary(pl.UTF-8):	Testowy program parsera Raptor RDF
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	redland-rapper
+Conflicts:	libraptor2-rapper
 
 %description rapper
 Raptor RDF parser test program.
@@ -121,11 +135,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/raptor.pc
 %{_mandir}/man1/raptor-config.1*
 %{_mandir}/man3/libraptor.3*
-%{_gtkdocdir}/raptor
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libraptor.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/raptor
 
 %files rapper
 %defattr(644,root,root,755)
