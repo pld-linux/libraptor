@@ -4,7 +4,7 @@ Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
 Version:	1.4.21
-Release:	3
+Release:	4
 License:	LGPL v2.1+ or GPL v2+ or Apache v2.0+
 Group:		Libraries
 Source0:	http://download.librdf.org/source/%{rname}-%{version}.tar.gz
@@ -68,6 +68,9 @@ Summary(pl.UTF-8):	Dokumentacja API biblioteki libraptor
 Group:		Documentation
 Requires:	gtk-doc-common
 Conflicts:	libraptor2-apidocs
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 libraptor API documentation.
