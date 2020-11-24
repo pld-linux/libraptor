@@ -4,7 +4,7 @@ Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
 Version:	1.4.21
-Release:	4
+Release:	5
 License:	LGPL v2.1+ or GPL v2+ or Apache v2.0+
 Group:		Libraries
 Source0:	http://download.librdf.org/source/%{rname}-%{version}.tar.gz
@@ -20,7 +20,7 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.6.8
 BuildRequires:	libxslt-devel >= 1.0.18
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.98
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -68,9 +68,7 @@ Summary(pl.UTF-8):	Dokumentacja API biblioteki libraptor
 Group:		Documentation
 Requires:	gtk-doc-common
 Conflicts:	libraptor2-apidocs
-%if "%{_rpmversion}" >= "5"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description apidocs
 libraptor API documentation.
@@ -117,6 +115,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libraptor.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -133,7 +133,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/raptor-config
 %attr(755,root,root) %{_libdir}/libraptor.so
-%{_libdir}/libraptor.la
 %{_includedir}/raptor.h
 %{_pkgconfigdir}/raptor.pc
 %{_mandir}/man1/raptor-config.1*
