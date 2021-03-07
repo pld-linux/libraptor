@@ -68,7 +68,7 @@ Summary(pl.UTF-8):	Dokumentacja API biblioteki libraptor
 Group:		Documentation
 Requires:	gtk-doc-common
 Conflicts:	libraptor2-apidocs
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 libraptor API documentation.
