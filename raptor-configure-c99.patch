@@ -1,0 +1,36 @@
+Avoid implicit declaration of vsnprintf in configure check.  Fixed
+upstream via:
+
+commit a7da6f35813e30124765d995d9053cb7f8529ca4
+Author: Dave Beckett <dave@dajobe.org>
+Date:   Wed Jun 6 10:16:19 2012 -0700
+
+    Make configure vsnprintf() check more comprehensive
+    
+    - Test program also needs <stdio.h> and (now) <stdlib.h>
+    - Declare is_c99() function as static to avoid "no previous
+      declaration" warning from GCC's -Wmissing-declarations
+    - Improved test to invoke vsnprintf(NULL, 0, ...) because on Solaris
+      8, the function returns -1 in this case but works normally otherwise
+    - Declare main(void) instead of main(int argc, char* argv) to avoid
+      "unused parameter" warnings
+    - Make test program return 0 if the test is successful,
+      as otherwise a false-positive result is possible (note that
+      AC_TRY_RUN() interprets failure to compile/link the program, etc.
+      the same as a non-zero program exit status)
+    - Make the test program return an exit status indicative of the
+      failure mode: 1 = non-NULL case fails, 10 = NULL case fails, 11 = both fail
+    - Use proper m4 quoting in modified code
+
+diff --git a/configure.ac b/configure.ac
+index a5fa9fee18a7bc59..181431fcd6745c2b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -281,6 +281,7 @@ AC_TRY_LINK([#ifdef HAVE_GETOPT_H
+ if test $ac_cv_func_vsnprintf = yes; then
+   AC_MSG_CHECKING(vsnprintf has C99 compatible return value)
+   AC_TRY_RUN([#include <stdarg.h>
++#include <stdio.h>
+ int is_c99(char *s, ...) {
+   char buffer[32];
+   va_list args;

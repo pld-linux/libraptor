@@ -4,11 +4,17 @@ Name:		libraptor
 # the real name is raptor, but it conflicts with already existing raptor game
 %define	rname	raptor
 Version:	1.4.21
-Release:	7
+Release:	8
 License:	LGPL v2.1+ or GPL v2+ or Apache v2.0+
 Group:		Libraries
 Source0:	http://download.librdf.org/source/%{rname}-%{version}.tar.gz
 # Source0-md5:	992061488af7a9e2d933df6b694bb876
+Patch0:		raptor-config-multilib.patch
+Patch1:		raptor-1.4.21-CVE-2012-0037.patch
+Patch2:		raptor-1.4.21-curl.patch
+Patch3:		raptor-1.4.21-CVE-2017-18926.patch
+Patch4:		raptor-configure-c99.patch
+Patch5:		raptor-1.4.21-gcc-14-fix.patch
 URL:		http://librdf.org/raptor/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.7
@@ -92,6 +98,12 @@ Testowy program parsera Raptor RDF.
 
 %prep
 %setup -q -n %{rname}-%{version}
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
+%patch -P4 -p1
+%patch -P5 -p1
 
 %build
 %{__libtoolize}

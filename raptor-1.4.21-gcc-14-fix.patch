@@ -1,0 +1,49 @@
+diff --git a/src/raptor_internal.h b/src/raptor_internal.h
+index b291e18..5bcd914 100644
+--- a/src/raptor_internal.h
++++ b/src/raptor_internal.h
+@@ -209,7 +209,7 @@ extern void raptor_libxml_generic_error(void* user_data, const char *msg, ...) R
+ extern void raptor_libxml_validation_error(void *context, const char *msg, ...) RAPTOR_PRINTF_FORMAT(2, 3);
+ extern void raptor_libxml_validation_warning(void *context, const char *msg, ...) RAPTOR_PRINTF_FORMAT(2, 3);
+ void raptor_libxml_free(xmlParserCtxtPtr xc);
+-void raptor_libxml_xmlStructuredErrorFunc(void *user_data, xmlErrorPtr err);
++void raptor_libxml_xmlStructuredErrorFunc(void *user_data, const xmlError *err);
+ 
+ /* raptor_parse.c - exported to libxml part */
+ extern void raptor_libxml_update_document_locator(raptor_sax2* sax2, raptor_locator* locator);
+diff --git a/src/raptor_libxml.c b/src/raptor_libxml.c
+index 9f2e9b0..d1a2f76 100644
+--- a/src/raptor_libxml.c
++++ b/src/raptor_libxml.c
+@@ -242,10 +242,6 @@ raptor_libxml_getEntity(void* user_data, const xmlChar *name)
+     }
+     
+     ret->owner = 1;
+-
+-    /* Mark this entity as having been checked - never do this again */
+-    if(!ret->checked)
+-      ret->checked = 1;
+   }
+ 
+   return ret;
+@@ -686,7 +682,7 @@ static const char* const raptor_libxml_domain_labels[XML_LAST_DL+2]= {
+   
+ 
+ void 
+-raptor_libxml_xmlStructuredErrorFunc(void *user_data, xmlErrorPtr err)
++raptor_libxml_xmlStructuredErrorFunc(void *user_data, const xmlError *err)
+ {
+   raptor_error_handlers* error_handlers = NULL;
+   raptor_stringbuffer* sb;
+@@ -718,11 +714,6 @@ raptor_libxml_xmlStructuredErrorFunc(void *user_data, xmlErrorPtr err)
+   if(err->level == XML_ERR_WARNING && !err->file)
+     return;
+ 
+-  /* XML fatal errors never cause an abort */
+-  if(err->level == XML_ERR_FATAL)
+-    err->level= XML_ERR_ERROR;
+-  
+-
+   sb=raptor_new_stringbuffer();
+   if(err->domain != XML_FROM_HTML)
+     raptor_stringbuffer_append_counted_string(sb, (const unsigned char*)"XML ",
